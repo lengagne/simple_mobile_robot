@@ -15,7 +15,7 @@
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
 <!--     <arg name="world_name" value="$(find mobile_robot_gazebo)/worlds/mobile_robot.world"/> -->
-    <arg name="world_name"  default="$(find ros_polytech_clermont)/worlds/labyrinthe1.world"/>
+    <arg name="world_name"  default="$(find mobile_robot_gazebo)/worlds/labyrinthe2.world"/>
     <arg name="debug" value="$(arg debug)" />
     <arg name="gui" value="$(arg gui)" />
     <arg name="paused" value="$(arg paused)"/>
@@ -25,7 +25,7 @@
 
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" 
-	args="-urdf -Y 1.57 -model mobile_robot -param robot_description "/>
+	args="-urdf -x -4.2 -y -5 -z 0 -Y 1.57  -model mobile_robot -param robot_description "/>
 
   <!-- Run RVIZ-->
 <!--   <node name="$(anon rviz)" pkg="rviz" type="rviz" args="$(find mobile_robot_gazebo)/mobile_robot.rviz" output="screen"/> -->
