@@ -93,20 +93,35 @@
 		<origin rpy="0 0.0 0" xyz="0.2 0 0.1"/>
 	</joint>
 
-  	<link name="SonarLeft_frame">
+  	<link name="SonarLeftFront_frame">
         </link>
-	<joint name="Sonar/Left_sensor_fixedjoint" type="fixed">
+	<joint name="Sonar/LeftFront_sensor_fixedjoint" type="fixed">
 		<parent link="chassis"/>
-		<child link="SonarLeft_frame"/>
-		<origin rpy="0 0.0 1.57" xyz="-0.05 0.1 0.1"/>
+		<child link="SonarLeftFront_frame"/>
+		<origin rpy="0 0.0 1.57" xyz="-0.0 0.1 0.1"/>
 	</joint>
 
-  	<link name="SonarRight_frame">
+  	<link name="SonarLeftBack_frame">
         </link>
-	<joint name="Sonar/Right_sensor_fixedjoint" type="fixed">
+	<joint name="Sonar/LeftBack_sensor_fixedjoint" type="fixed">
 		<parent link="chassis"/>
-		<child link="SonarRight_frame"/>
-		<origin rpy="0 0.0 -1.57" xyz="-0.05 -0.1 0.1"/>
+		<child link="SonarLeftBack_frame"/>
+		<origin rpy="0 0.0 1.57" xyz="-0.2 0.1 0.1"/>
+	</joint>
+        
+  	<link name="SonarRightFront_frame">
+        </link>
+	<joint name="Sonar/RightFront_sensor_fixedjoint" type="fixed">
+		<parent link="chassis"/>
+		<child link="SonarRightFront_frame"/>
+		<origin rpy="0 0.0 -1.57" xyz="-0.0 -0.1 0.1"/>
+	</joint>        
+  	<link name="SonarRightBack_frame">
+        </link>
+	<joint name="Sonar/RightBack_sensor_fixedjoint" type="fixed">
+		<parent link="chassis"/>
+		<child link="SonarRightBack_frame"/>
+		<origin rpy="0 0.0 -1.57" xyz="-0.2 -0.1 0.1"/>
 	</joint>        
         
     <joint name="imu_joint" type="fixed">

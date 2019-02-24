@@ -90,8 +90,8 @@
   </sensor>
 </gazebo> 
 
- <gazebo reference="SonarLeft_frame">
-  <sensor type="ray" name="SonarLeft">
+ <gazebo reference="SonarLeftFront_frame">
+  <sensor type="ray" name="SonarLeftFront">
     <pose>0 0 0 0 0 0</pose>
     <update_rate>20</update_rate>
     <visualize>true</visualize>
@@ -120,8 +120,8 @@
       <gaussianNoise>0.001</gaussianNoise>
       <alwaysOn>true</alwaysOn>
       <updateRate>5</updateRate>
-      <topicName>/mobile_robot/sonar_left</topicName>
-      <frameName>SonarLeft_frame</frameName>
+      <topicName>/mobile_robot/sonar_left_front</topicName>
+      <frameName>SonarLeftFront_frame</frameName>
       <minRange>0.025</minRange>
       <maxRange>2.55</maxRange>
       <fov>0.5</fov>
@@ -130,8 +130,8 @@
   </sensor>
 </gazebo> 
 
- <gazebo reference="SonarRight_frame">
-  <sensor type="ray" name="SonarRight">
+ <gazebo reference="SonarLeftBack_frame">
+  <sensor type="ray" name="SonarLeftBack">
     <pose>0 0 0 0 0 0</pose>
     <update_rate>20</update_rate>
     <visualize>true</visualize>
@@ -160,8 +160,49 @@
       <gaussianNoise>0.001</gaussianNoise>
       <alwaysOn>true</alwaysOn>
       <updateRate>5</updateRate>
-      <topicName>/mobile_robot/sonar_right</topicName>
-      <frameName>SonarRight_frame</frameName>
+      <topicName>/mobile_robot/sonar_left_back</topicName>
+      <frameName>SonarLeftBack_frame</frameName>
+      <minRange>0.025</minRange>
+      <maxRange>2.55</maxRange>
+      <fov>0.5</fov>
+      <radiation>ultrasound</radiation>
+    </plugin>
+  </sensor>
+</gazebo> 
+
+
+ <gazebo reference="SonarRightFront_frame">
+  <sensor type="ray" name="SonarRightFront">
+    <pose>0 0 0 0 0 0</pose>
+    <update_rate>20</update_rate>
+    <visualize>true</visualize>
+    <ray>
+      <scan>
+        <horizontal>
+          <samples>5</samples>
+          <resolution>1</resolution>
+          <min_angle>-0.1</min_angle>
+          <max_angle>0.1</max_angle> 
+        </horizontal>
+        <vertical>
+          <samples>5</samples>
+          <resolution>1</resolution>
+          <min_angle>-0.05</min_angle>
+          <max_angle>0.13</max_angle>
+        </vertical>
+      </scan>
+      <range>
+        <min>0.025</min>
+        <max>2.55</max> 
+        <resolution>1</resolution>
+      </range>
+    </ray>
+    <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+      <gaussianNoise>0.001</gaussianNoise>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>5</updateRate>
+      <topicName>/mobile_robot/sonar_right_front</topicName>
+      <frameName>SonarRightFront_frame</frameName>
       <minRange>0.025</minRange>
       <maxRange>2.55</maxRange>
       <fov>0.5</fov>
@@ -169,6 +210,47 @@
     </plugin>
   </sensor>
 </gazebo>
+
+ <gazebo reference="SonarRightBack_frame">
+  <sensor type="ray" name="SonarRightBack">
+    <pose>0 0 0 0 0 0</pose>
+    <update_rate>20</update_rate>
+    <visualize>true</visualize>
+    <ray>
+      <scan>
+        <horizontal>
+          <samples>5</samples>
+          <resolution>1</resolution>
+          <min_angle>-0.1</min_angle>
+          <max_angle>0.1</max_angle> 
+        </horizontal>
+        <vertical>
+          <samples>5</samples>
+          <resolution>1</resolution>
+          <min_angle>-0.05</min_angle>
+          <max_angle>0.13</max_angle>
+        </vertical>
+      </scan>
+      <range>
+        <min>0.025</min>
+        <max>2.55</max> 
+        <resolution>1</resolution>
+      </range>
+    </ray>
+    <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+      <gaussianNoise>0.001</gaussianNoise>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>5</updateRate>
+      <topicName>/mobile_robot/sonar_right_back</topicName>
+      <frameName>SonarRightBack_frame</frameName>
+      <minRange>0.025</minRange>
+      <maxRange>2.55</maxRange>
+      <fov>0.5</fov>
+      <radiation>ultrasound</radiation>
+    </plugin>
+  </sensor>
+</gazebo>
+
 
 <gazebo>
   <plugin name="imu_controller" filename="libgazebo_ros_imu.so">
