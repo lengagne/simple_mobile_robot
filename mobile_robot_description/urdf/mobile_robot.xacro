@@ -98,7 +98,7 @@
 	<joint name="Sonar/LeftFront_sensor_fixedjoint" type="fixed">
 		<parent link="chassis"/>
 		<child link="SonarLeftFront_frame"/>
-		<origin rpy="0 0.0 1.57" xyz="-0.0 0.1 0.1"/>
+		<origin rpy="0 0.0 1.57" xyz="-0.02 0.1 0.1"/>
 	</joint>
 
   	<link name="SonarLeftBack_frame">
@@ -114,7 +114,7 @@
 	<joint name="Sonar/RightFront_sensor_fixedjoint" type="fixed">
 		<parent link="chassis"/>
 		<child link="SonarRightFront_frame"/>
-		<origin rpy="0 0.0 -1.57" xyz="-0.0 -0.1 0.1"/>
+		<origin rpy="0 0.0 -1.57" xyz="-0.02 -0.1 0.1"/>
 	</joint>        
   	<link name="SonarRightBack_frame">
         </link>
