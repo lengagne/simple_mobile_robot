@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="$(find braccio_arm_gazebo)/urdf/cube.xacro" />
+    <link name="my_box">
+        <inertial>
+        <origin xyz="0 0 0" />
+        <mass value="10" />
+        <inertia  ixx="${100/12.0}" ixy="0.0"  ixz="0.0"  iyy="${100/12.0}"  iyz="0.0"  izz="${100/12.0}" />
+        </inertial>
+        <visual>
+        <origin xyz="0 0 0"/>
+        <geometry>
+            <box size="0.33 0.22 0.3" />
+        </geometry>
+        </visual>         
+        <collision>
+        <geometry>
+            <box size="0.33 0.22 0.3" />
+        </geometry>
+        </collision>
+    </link>
+    <gazebo reference="my_box">
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <minDepth>0.003</minDepth>  
+    <maxVel>0</maxVel>  
+    </gazebo>    
+</robot>

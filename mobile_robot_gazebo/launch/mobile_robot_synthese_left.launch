@@ -1,0 +1,39 @@
+<launch>
+
+
+  <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <!-- Load the URDF into the ROS Parameter Server -->
+  <param name="robot_description"
+	 command="$(find xacro)/xacro '$(find mobile_robot_description)/urdf/mobile_robot.xacro'" />
+
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name"  default="$(find mobile_robot_gazebo)/worlds/synthese.world"/>
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+  </include>
+
+  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" 
+	args="-urdf -x -6 -y -1.0 -model mobile_robot -param robot_description "/>
+
+  <!-- ros_control mobile_robot launch file -->
+  <include file="$(find mobile_robot_control)/launch/mobile_robot_control.launch" /> 
+  
+  
+  <param name="box1" command="$(find xacro)/xacro '$(find mobile_robot_gazebo)/urdf/box.xacro'" />
+  <param name="box2" command="$(find xacro)/xacro '$(find mobile_robot_gazebo)/urdf/box.xacro'" />
+  
+  <node name="urdf_spawner_box1" pkg="gazebo_ros" type="spawn_model" args="-urdf -model box1 -x 0.2 -y -1.5 -z 0.2  -param box1"/>  
+  <node name="urdf_spawner_box2" pkg="gazebo_ros" type="spawn_model" args="-urdf -model box2 -x 0.2 -y -3.5 -z 0.2  -param box2"/>  
+
+</launch>
