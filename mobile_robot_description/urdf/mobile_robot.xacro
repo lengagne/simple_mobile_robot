@@ -82,8 +82,8 @@
   </link>
 
 
-  <wheel lr="left" tY="-1"/>
-  <wheel lr="right" tY="1"/>
+  <wheel lr="left" tY="1"/>
+  <wheel lr="right" tY="-1"/>
   
   	<link name="SonarFront_frame">
         </link>
